@@ -22,10 +22,13 @@ driver.find_element(By.ID, 'nav-orders').click()
 driver.find_element(By.XPATH, "//h1[@class='a-spacing-small']")
 driver.find_element(By.ID, 'ap_email')
 
-expected_result = driver.find_element(By.XPATH, "//h1[@class='a-spacing-small']") and driver.find_element(By.ID, 'ap_email')
-actual_result  = driver.find_element(By.XPATH, "//h1[@class='a-spacing-small']") and driver.find_element(By.ID, 'ap_email')
+expected_text = 'Sign in'
+actual_text = driver.find_element(By.XPATH, "//h1[@class='a-spacing-small']").text
 
-assert expected_result == actual_result, f'Error! Expected {expected_result} but got actual {actual_result}'
+assert actual_text == expected_text, f'Expected {expected_text} but got {actual_text}'
+
+# Verify email field present
+driver.find_element(By.ID, 'ap_email')
 
 print('Test Passed')
 
